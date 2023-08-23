@@ -25,5 +25,26 @@ module.exports = [
       extensions: ['.js', '.jsx']
     },
     mode: 'development'
-  }
+  },
+  {
+    entry: './app/app.jsx', // Entry point for your client-side code
+    output: {
+      filename: 'app.js',
+      path: path.resolve(__dirname, 'dist'),
+      publicPath: '/static/' // Important for dynamic imports to know where to fetch bundles
+    },
+    module: {
+      rules: [
+        {
+          test: /\.(js|jsx)$/,
+          exclude: /node_modules/,
+          use: 'babel-loader'
+        }
+      ]
+    },
+    resolve: {
+      extensions: ['.js', '.jsx']
+    },
+    mode: 'development'
+  },
 ];
